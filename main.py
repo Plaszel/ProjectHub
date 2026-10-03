@@ -302,6 +302,12 @@ def startup():
 @app.get("/")
 def index(): return FileResponse(os.path.join(BASE, "static", "index.html"))
 
+@app.get("/style.css")
+def index(): return FileResponse(os.path.join(BASE, "static", "style.css"))
+
+@app.get("/script.js")
+def index(): return FileResponse(os.path.join(BASE, "static", "script.js"))
+
 if __name__ == "__main__":  # python main.py
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=3000, proxy_headers=True, forwarded_allow_ips="127.0.0.1")

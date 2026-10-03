@@ -1,0 +1,1457 @@
+
+/* ============================================================
+   WSPÓLNIE
+   Hub Innowacji Społecznych Małopolski
+
+   Visual direction:
+   "Atlas obywatelski"
+
+   Deep civic ink + regional red + restrained green.
+   The topographic line system is the single visual signature.
+   ============================================================ */
+
+:root {
+  --ink: #102a43;
+  --ink-deep: #091d2d;
+  --ink-soft: #284861;
+
+  --red: #b4233c;
+  --red-dark: #8f1c30;
+  --red-pale: #f9e9ed;
+
+  --green: #2f6b57;
+  --green-dark: #20503f;
+  --green-pale: #eaf3ef;
+
+  --paper: #f4f6f5;
+  --paper-deep: #e9eeec;
+  --white: #ffffff;
+
+  --text: #172b3a;
+  --muted: #536575;
+  --line: #cbd5dc;
+  --line-light: #e1e7eb;
+
+  --focus: #005fcc;
+
+  --max: 1160px;
+  --gutter: 28px;
+
+  --radius: 4px;
+
+  --shadow-small: 0 2px 8px rgba(16, 42, 67, 0.07);
+  --shadow-medium: 0 8px 24px rgba(16, 42, 67, 0.10);
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: var(--text);
+  background:
+    linear-gradient(
+      180deg,
+      var(--paper) 0,
+      #fff 520px
+    );
+
+  font-family:
+    "Atkinson Hyperlegible",
+    system-ui,
+    sans-serif;
+
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+.skip {
+  position: fixed;
+  z-index: 9999;
+
+  top: -100px;
+  left: 20px;
+
+  padding: 12px 18px;
+
+  color: #fff;
+  background: var(--ink-deep);
+
+  font-weight: 700;
+  text-decoration: none;
+
+  border: 2px solid #fff;
+}
+
+.skip:focus {
+  top: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+header {
+  position: relative;
+  z-index: 20;
+
+  color: #fff;
+  background: var(--ink);
+
+  border-bottom: 5px solid var(--red);
+
+  overflow: hidden;
+}
+
+
+/* ------------------------------------------------------------
+   Topographic signature
+
+   Deliberately subtle. It gives the site its own visual
+   language without becoming a decorative hero illustration.
+   ------------------------------------------------------------ */
+
+header::after {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  width: 760px;
+  height: 360px;
+
+  right: -110px;
+  top: -125px;
+
+  opacity: 0.16;
+
+  background:
+    repeating-radial-gradient(
+      ellipse at 60% 45%,
+      transparent 0 23px,
+      rgba(255, 255, 255, 0.45) 24px 25px,
+      transparent 26px 47px
+    );
+
+  transform: rotate(-9deg);
+  pointer-events: none;
+}
+
+
+/* small regional stripe */
+
+header::before {
+  content: "";
+
+  display: block;
+
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--red) 0 42%,
+      #fff 42% 58%,
+      var(--red) 58% 100%
+    );
+}
+
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+header > b {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  width: min(
+    var(--max),
+    calc(100% - (var(--gutter) * 2))
+  );
+
+  margin: 0 auto;
+
+  padding: 20px 0 6px;
+
+  color: #fff;
+
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+}
+
+
+/* logo Małopolski */
+
+header > b::before {
+  content: "";
+
+  flex: 0 0 142px;
+
+  width: 142px;
+  height: 64px;
+
+  background-color: #fff;
+
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ0M87GusTG4shpR8cizTIeBkbPFvTrGHXmGOCzCpfwg&s=10");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 128px auto;
+
+  border-radius: 3px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.16);
+}
+
+
+/* podpis pod WSPÓLNIE */
+
+header > b::after {
+  content: "Hub Innowacji Społecznych Małopolski";
+
+  display: block;
+
+  margin-top: 8px;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+header nav {
+  width: min(
+    var(--max),
+    calc(100% - (var(--gutter) * 2))
+  );
+
+  margin: 21px auto 0;
+
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+header nav a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 48px;
+
+  padding: 9px 16px;
+
+  color: #fff;
+
+  font-size: 0.96rem;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition:
+    background 120ms ease,
+    color 120ms ease;
+}
+
+header nav a:first-child {
+  padding-left: 0;
+  padding-right: 19px;
+}
+
+header nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+header nav a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+header nav a[aria-current="page"]::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: 4px;
+
+  background: #fff;
+}
+
+
+/* ============================================================
+   ACCESSIBILITY CONTROLS
+   ============================================================ */
+
+.a11y-btn {
+  position: absolute;
+
+  top: 27px;
+  right: max(
+    var(--gutter),
+    calc((100vw - var(--max)) / 2)
+  );
+
+  min-height: 38px;
+
+  padding: 7px 13px;
+
+  color: #fff;
+  background: transparent;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--radius);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.a11y-btn:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.a11y-panel {
+  position: absolute;
+  z-index: 50;
+
+  top: 76px;
+
+  right: max(
+    var(--gutter),
+    calc((100vw - var(--max)) / 2)
+  );
+
+  width: min(390px, calc(100vw - 40px));
+
+  padding: 19px;
+
+  color: var(--text);
+  background: #fff;
+
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--red);
+
+  box-shadow: var(--shadow-medium);
+}
+
+.a11y-panel[hidden] {
+  display: none;
+}
+
+.a11y-panel b {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.a11y-panel button {
+  margin: 5px 4px 0 0;
+}
+
+
+/* ============================================================
+   USER STATUS
+   ============================================================ */
+
+#whoami {
+  display: block;
+
+  width: min(
+    var(--max),
+    calc(100% - (var(--gutter) * 2))
+  );
+
+  margin: 0 auto;
+
+  padding: 5px 0 15px;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  font-size: 0.88rem !important;
+}
+
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+
+main {
+  width: min(
+    var(--max),
+    calc(100% - (var(--gutter) * 2))
+  );
+
+  min-height: calc(100vh - 260px);
+
+  margin: 0 auto;
+
+  padding: 58px 0 90px;
+}
+
+
+/* ============================================================
+   PAGE TITLE
+
+   The oversized title is the main visual gesture.
+   No eyebrow, no decorative word coloring.
+   ============================================================ */
+
+main > h1 {
+  max-width: 760px;
+
+  margin: 0 0 16px;
+
+  color: var(--ink);
+
+  font-size: clamp(2.15rem, 5vw, 3.65rem);
+  font-weight: 700;
+  line-height: 1.04;
+
+  letter-spacing: -0.045em;
+}
+
+main > h1::after {
+  content: "";
+
+  display: block;
+
+  width: 76px;
+  height: 6px;
+
+  margin-top: 23px;
+
+  background: var(--red);
+}
+
+
+/* ============================================================
+   HEADINGS
+   ============================================================ */
+
+h2,
+h3 {
+  color: var(--ink);
+  line-height: 1.22;
+}
+
+main > h2 {
+  margin-top: 52px;
+
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h2 {
+  font-size: 1.55rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+
+/* ============================================================
+   BODY COPY
+   ============================================================ */
+
+p {
+  max-width: 76ch;
+  margin: 0 0 1rem;
+}
+
+.mut {
+  color: var(--muted);
+}
+
+a {
+  color: #145d91;
+
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+
+/* ============================================================
+   FORMS
+
+   The form is treated as the primary civic tool, not a card.
+   ============================================================ */
+
+form {
+  max-width: 780px;
+
+  margin-top: 32px;
+  padding: 30px 0;
+
+  background: transparent;
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  box-shadow: none;
+}
+
+label {
+  display: block;
+
+  margin: 22px 0 7px;
+
+  color: var(--ink);
+
+  font-weight: 700;
+}
+
+label:first-child {
+  margin-top: 0;
+}
+
+input,
+textarea,
+select {
+  display: block;
+
+  width: 100%;
+
+  min-height: 50px;
+
+  padding: 10px 13px;
+
+  color: var(--text);
+  background: #fff;
+
+  border: 2px solid #9eabb5;
+  border-radius: var(--radius);
+
+  transition:
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+textarea {
+  min-height: 155px;
+  resize: vertical;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--ink-soft);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--focus);
+
+  box-shadow:
+    0 0 0 3px rgba(0, 95, 204, 0.14);
+
+  outline: none;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 46px;
+
+  margin-top: 17px;
+  padding: 10px 19px;
+
+  color: #fff;
+  background: var(--red);
+
+  border: 2px solid var(--red);
+  border-radius: var(--radius);
+
+  cursor: pointer;
+
+  font-weight: 700;
+  line-height: 1.2;
+
+  text-decoration: none;
+
+  transition:
+    background 120ms ease,
+    border-color 120ms ease;
+}
+
+button:hover,
+.btn:hover {
+  color: #fff;
+
+  background: var(--red-dark);
+  border-color: var(--red-dark);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+button.alt,
+.btn.alt {
+  color: var(--ink);
+  background: #fff;
+  border-color: var(--ink-soft);
+}
+
+button.alt:hover,
+.btn.alt:hover {
+  color: #fff;
+  background: var(--ink);
+}
+
+
+/* ============================================================
+   PROJECT CONTENT
+
+   Cards are deliberately restrained. They use a left rule
+   rather than the ubiquitous rounded floating-card treatment.
+   ============================================================ */
+
+.card {
+  position: relative;
+
+  max-width: 900px;
+
+  margin: 28px 0;
+  padding: 25px 28px;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--ink-soft);
+
+  border-radius: 2px;
+
+  box-shadow: var(--shadow-small);
+}
+
+.card:hover {
+  border-left-color: var(--red);
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+.card h3 {
+  max-width: 650px;
+  margin-bottom: 9px;
+}
+
+
+/* ============================================================
+   SCORE
+
+   Not a floating pill. It reads like a public-service datum.
+   ============================================================ */
+
+.score {
+  position: absolute;
+
+  top: 25px;
+  right: 27px;
+
+  color: var(--muted);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  border-bottom: 2px solid var(--red);
+
+  padding-bottom: 2px;
+}
+
+
+/* ============================================================
+   TAGS
+   ============================================================ */
+
+.tag {
+  display: inline-block;
+
+  margin: 5px 5px 5px 0;
+  padding: 3px 8px;
+
+  color: var(--ink-soft);
+  background: var(--paper);
+
+  border: 1px solid var(--line);
+
+  border-radius: 2px;
+
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   PROGRESS
+   ============================================================ */
+
+.bar {
+  width: 100%;
+  height: 9px;
+
+  margin: 20px 0 8px;
+
+  background: var(--paper-deep);
+
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+
+  height: 100%;
+  min-width: 2px;
+
+  background: var(--red);
+
+  transition: width 350ms ease;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.ok {
+  background: var(--green-pale);
+
+  border-color: #a9cbbb;
+  border-left-color: var(--green);
+}
+
+.ok h2,
+.ok h3 {
+  color: var(--green-dark);
+}
+
+.err {
+  background: var(--red-pale);
+
+  border-color: #e2b5bf;
+  border-left-color: var(--red);
+}
+
+.err h1,
+.err h2,
+.err h3 {
+  color: var(--red-dark);
+}
+
+.err-txt {
+  min-height: 1.5em;
+
+  color: var(--red-dark);
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   QR / VERIFICATION
+   ============================================================ */
+
+.qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+
+  margin: 24px 0;
+  padding: 20px;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+}
+
+.qr img {
+  display: block;
+
+  width: min(280px, 100%);
+  height: auto;
+
+  image-rendering: pixelated;
+}
+
+
+/* ============================================================
+   LOADING
+
+   One functional animation only.
+   ============================================================ */
+
+.spin {
+  width: 38px;
+  height: 38px;
+
+  margin: 0 0 18px;
+
+  border: 4px solid var(--paper-deep);
+  border-top-color: var(--red);
+
+  border-radius: 50%;
+
+  animation: wspolnie-spin 750ms linear infinite;
+}
+
+@keyframes wspolnie-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pop {
+  animation: wspolnie-pop 220ms ease-out;
+}
+
+@keyframes wspolnie-pop {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+
+.tw {
+  overflow-x: auto;
+
+  margin: 24px 0;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  box-shadow: var(--shadow-small);
+}
+
+table {
+  width: 100%;
+  min-width: 760px;
+
+  border-collapse: collapse;
+}
+
+caption {
+  padding: 15px 16px;
+
+  text-align: left;
+
+  color: var(--muted);
+}
+
+th,
+td {
+  padding: 14px 15px;
+
+  border-bottom: 1px solid var(--line-light);
+
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: #fff;
+  background: var(--ink);
+
+  font-size: 0.95rem;
+}
+
+tbody tr:nth-child(even) td {
+  background: var(--paper);
+}
+
+tbody tr:hover td {
+  background: #eef4f1;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+
+/* ============================================================
+   LISTS
+   ============================================================ */
+
+ul {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin: 6px 0;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+  color: #fff;
+
+  background: var(--ink-deep);
+
+  border-top: 5px solid var(--red);
+}
+
+footer p {
+  width: min(
+    var(--max),
+    calc(100% - (var(--gutter) * 2))
+  );
+
+  margin: 0 auto;
+
+  padding: 28px 0;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   HIGH CONTRAST MODE
+
+   Compatible with the existing JS:
+   html.hc
+   ============================================================ */
+
+html.hc {
+  --ink: #000;
+  --ink-deep: #000;
+  --ink-soft: #000;
+
+  --red: #a00000;
+  --red-dark: #700000;
+
+  --green: #005000;
+  --green-dark: #003800;
+
+  --paper: #fff;
+  --paper-deep: #ddd;
+  --white: #fff;
+
+  --text: #000;
+  --muted: #222;
+
+  --line: #000;
+  --line-light: #000;
+
+  --focus: #0000ff;
+}
+
+html.hc body {
+  background: #fff;
+}
+
+html.hc .card,
+html.hc form,
+html.hc .tw {
+  box-shadow: none;
+  border-color: #000;
+}
+
+html.hc a {
+  color: #0000a8;
+  text-decoration: underline;
+}
+
+html.hc button,
+html.hc .btn {
+  color: #fff;
+  background: #000;
+  border-color: #000;
+}
+
+html.hc button.alt,
+html.hc .btn.alt {
+  color: #000;
+  background: #fff;
+}
+
+
+/* ============================================================
+   DISABLE ANIMATIONS
+
+   Compatible with existing JS:
+   html.noanim
+   ============================================================ */
+
+html.noanim *,
+html.noanim *::before,
+html.noanim *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 18px;
+  }
+
+  header > b {
+    padding-top: 21px;
+    padding-right: 100px;
+  }
+
+  .a11y-btn {
+    top: 23px;
+    right: var(--gutter);
+  }
+
+  header nav {
+    margin-top: 17px;
+  }
+
+  header nav a,
+  header nav a:first-child {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  main {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+
+  main > h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .card {
+    padding: 22px 20px;
+  }
+
+  .score {
+    position: static;
+
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    border-bottom-width: 2px;
+  }
+
+  .card h3 {
+    padding: 0;
+  }
+
+  button,
+  .btn {
+    width: 100%;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL SCREENS
+   ============================================================ */
+
+@media (max-width: 480px) {
+  header nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  header nav a {
+    justify-content: center;
+
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    text-align: center;
+  }
+
+  header > b {
+    font-size: 1.6rem;
+  }
+
+  header > b::after {
+    font-size: 0.8rem;
+  }
+
+  form {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .a11y-panel {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    width: calc(100% - 36px);
+
+    margin: 10px 18px 15px;
+  }
+}
+
+
+/* ============================================================
+   SYSTEM REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ============================================================
+   ACCESSIBILITY CONTROLS
+   WordPress-style floating accessibility widget
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   FLOATING BUTTON
+   ------------------------------------------------------------ */
+
+.a11y-btn {
+  position: fixed !important;
+  z-index: 99999;
+
+  right: 20px;
+  bottom: 20px;
+
+  width: 58px;
+  height: 58px;
+
+  min-height: 58px;
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  background: var(--red);
+
+  border: 3px solid #fff;
+  border-radius: 50%;
+
+  box-shadow:
+    0 4px 14px rgba(9, 29, 45, 0.28),
+    0 0 0 3px rgba(180, 35, 60, 0.18);
+
+  cursor: pointer;
+
+  font-size: 0;
+  line-height: 1;
+
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
+    box-shadow 120ms ease;
+}
+
+
+/* ikona człowieka / dostępności */
+
+.a11y-btn::before {
+  content: "♿";
+
+  display: block;
+
+  color: #fff;
+
+  font-family:
+    "Arial",
+    sans-serif;
+
+  font-size: 27px;
+  font-weight: 900;
+
+  line-height: 1;
+}
+
+
+/* hover */
+
+.a11y-btn:hover {
+  color: #fff;
+
+  background: var(--red-dark);
+
+  border-color: #fff;
+
+  transform: translateY(-2px) scale(1.03);
+
+  box-shadow:
+    0 7px 18px rgba(9, 29, 45, 0.32),
+    0 0 0 4px rgba(180, 35, 60, 0.22);
+}
+
+
+/* klik */
+
+.a11y-btn:active {
+  transform: scale(.96);
+}
+
+
+/* focus */
+
+.a11y-btn:focus-visible {
+  outline: 4px solid var(--focus);
+  outline-offset: 4px;
+}
+
+
+/* ------------------------------------------------------------
+   PANEL
+   ------------------------------------------------------------ */
+
+.a11y-panel {
+  position: fixed !important;
+  z-index: 99998;
+
+  right: 20px;
+  bottom: 91px;
+
+  width: min(390px, calc(100vw - 40px));
+
+  max-height: calc(100vh - 125px);
+
+  overflow-y: auto;
+
+  padding: 20px;
+
+  color: var(--text);
+  background: #fff;
+
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--red);
+
+  border-radius: var(--radius);
+
+  box-shadow:
+    0 12px 35px rgba(9, 29, 45, 0.22);
+
+  animation: a11y-open 140ms ease-out;
+}
+
+
+.a11y-panel[hidden] {
+  display: none !important;
+}
+
+
+/* ------------------------------------------------------------
+   PANEL CONTENT
+   ------------------------------------------------------------ */
+
+.a11y-panel b {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: var(--ink);
+
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+
+.a11y-panel button {
+  margin: 5px 4px 0 0;
+
+  min-height: 42px;
+}
+
+
+/* ------------------------------------------------------------
+   OPEN ANIMATION
+   ------------------------------------------------------------ */
+
+@keyframes a11y-open {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ------------------------------------------------------------
+   MOBILE
+   ------------------------------------------------------------ */
+
+@media (max-width: 760px) {
+
+  .a11y-btn {
+    position: fixed !important;
+
+    right: 16px;
+    bottom: 16px;
+
+    width: 56px;
+    height: 56px;
+
+    min-height: 56px;
+
+    border-width: 3px;
+  }
+
+  .a11y-btn::before {
+    font-size: 25px;
+  }
+
+  .a11y-panel {
+    position: fixed !important;
+
+    right: 16px;
+    bottom: 84px;
+
+    width: calc(100vw - 32px);
+
+    max-height: calc(100vh - 105px);
+
+    margin: 0;
+
+    padding: 18px;
+  }
+}
+
+
+/* ------------------------------------------------------------
+   VERY SMALL SCREENS
+   ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+
+  .a11y-btn {
+    right: 12px;
+    bottom: 12px;
+
+    width: 54px;
+    height: 54px;
+
+    min-height: 54px;
+  }
+
+  .a11y-panel {
+    right: 12px;
+    bottom: 78px;
+
+    width: calc(100vw - 24px);
+
+    max-height: calc(100vh - 95px);
+  }
+}
+
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .a11y-btn,
+  .a11y-panel {
+    transition: none;
+    animation: none;
+  }
+}
+
